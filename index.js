@@ -15,20 +15,11 @@ const getNews = () => {
         if (response.statusCode === 200) {
           console.log("response ok");
           const $ = cheerio.load(body);
-          const list_text_inner_arr = $(".h2.entry-title > a").toArray();
-          console.log(list_text_inner_arr);
-          console.log(list_text_inner_arr.length);
 
-          /*const result = [];
+          let titles = [];
+          const list_text_inner_arr = $(".h2.entry-title > a").each((index, item)=>{titles.push(item.attribs.title)});
+          console.log(titles);
 
-          list_text_inner_arr.forEach((div) => {
-              const aFirst = $(div).find("a").first();
-              result.push({
-                aFirst,
-              });              
-          });
-
-          console.log(result);*/
         }
       }
     );
