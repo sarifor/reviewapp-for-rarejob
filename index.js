@@ -16,9 +16,9 @@ const getNews = () => {
           console.log("response ok");
           const $ = cheerio.load(body);
 
-          let titles = [];
-          const list_text_inner_arr = $(".h2.entry-title > a").each((index, item)=>{titles.push(item.attribs.title)});
-          console.log(titles);
+          let articles = [];
+          const list_text_inner_arr = $(".h2.entry-title > a").each((index, item)=>{articles.push(item.attribs)});
+          console.log(articles);
 
         }
       }
