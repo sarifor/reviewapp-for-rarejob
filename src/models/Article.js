@@ -22,6 +22,6 @@ const ArticleSchema = new mongoose.Schema({
     }
 });
 
-const model = mongoose.model("Article", VideoSchema, "Article");
+const model = mongoose.model("Article", ArticleSchema, "Article");
 
 export default model;
