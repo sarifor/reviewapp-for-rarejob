@@ -1,32 +1,22 @@
-import "regenerator-runtime";
-import fetch from "node-fetch";
+import axios from "axios";
 import cheerio from "cheerio";
 
-/*
-C:\Users\ivego\Desktop\Node\reviewapp_for_rarejob\node_modules\node-fetch\src\index.js:9
-import http from 'http';
-       ^^^^
-
-SyntaxError: Unexpected identifier
-*/
-
-// fetch 작동하나 보기 위한 임시 코드
 export const getData = async (req, res) => {
-  let articles = [];
-  let result = [];
-
-  const response = await fetch('https://www.rarejob.com/dna/2021/08/');
-  const body = await response.text();
-  console.log(body);
-
-  /*
   try {
-    const response = await fetch('https://www.rarejob.com/dna/2021/08/');
-    const body = await response.text();
+    let articles = [];
+    let result = [];
+
+    const baseURL = "https://www.rarejob.com/dna/2021/08/";
+    const client = axios.create({
+      baseURL: baseURL
+    });
+    
+    const body = await client.get("/");
     const $ = cheerio.load(body);
+    console.log(body);
 
     $(".h2.entry-title > a").each((index, item)=>{articles.push(item.attribs)});
-    // console.log(articles);
+    console.log(articles); // []로 나옴(배열이 채워지지 않음)
 
     articles.forEach((div) => { // 배열의 각 요소에 대해 함수 실행
       const path = div.href;
@@ -44,6 +34,6 @@ export const getData = async (req, res) => {
     });
   } catch(e) {
     console.log(e);
-  };*/
+  };
   
 };
