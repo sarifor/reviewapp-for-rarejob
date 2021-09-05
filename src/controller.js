@@ -9,28 +9,31 @@ const accessURL = async () => {
   const client = axios.create({
     baseURL: baseURL
   });
-  
-  const response = await client.get("/");
-  const $ = cheerio.load(response.data);
 
-  $(".h2.entry-title > a").each((index, item)=>{articles.push(item.attribs)});
-  // console.log(articles);
+  for (var i = 1; i < 5; i++) {
+    const response = await client.get(`/page/${i}`);
+    const $ = cheerio.load(response.data);
 
-  articles.forEach((div) => { // 배열의 각 요소에 대해 함수 실행
-    const path = div.href;
-    const url = `https://www.rarejob.com${path}`;
-    const title = div.title;
-    const date = url.substring(28, 38);
+    $(".h2.entry-title > a").each((index, item)=>{articles.push(item.attribs)});
 
-    result.push({
-        url,
-        title,
-        date,
+    articles.forEach((div) => { // 배열의 각 요소에 대해 함수 실행
+      const path = div.href;
+      const url = `https://www.rarejob.com${path}`;
+      const title = div.title;
+      const date = url.substring(28, 38);
+
+      result.push({
+          url,
+          title,
+          date,
+      });
+
     });
 
-  });
+    articles = [];
+     
+  }
 
-  articles = [];
 };
 
 
