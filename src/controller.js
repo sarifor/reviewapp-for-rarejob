@@ -36,7 +36,7 @@ const accessURL = async () => {
 
 export const getData = async (req, res) => {
   try {
-    accessURL();
+    await accessURL();
     console.log("now in getData Function");
     console.log(result); // 전역변수에 값을 넣었는데도, [](빈 배열)만 나옴.
     return res.render("home", { result });
