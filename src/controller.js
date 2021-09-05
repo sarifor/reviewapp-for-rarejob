@@ -1,4 +1,5 @@
-import fetch from 'node-fetch';
+import "regenerator-runtime";
+import fetch from "node-fetch";
 import cheerio from "cheerio";
 
 /*
@@ -9,12 +10,19 @@ import http from 'http';
 SyntaxError: Unexpected identifier
 */
 
+// fetch 작동하나 보기 위한 임시 코드
 export const getData = async (req, res) => {
   let articles = [];
   let result = [];
 
+  const response = await fetch('https://www.rarejob.com/dna/2021/08/');
+  const body = await response.text();
+  console.log(body);
+
+  /*
   try {
-    const body = await fetch('https://www.rarejob.com/dna/2021/08/', {method: 'GET'});
+    const response = await fetch('https://www.rarejob.com/dna/2021/08/');
+    const body = await response.text();
     const $ = cheerio.load(body);
 
     $(".h2.entry-title > a").each((index, item)=>{articles.push(item.attribs)});
@@ -36,6 +44,6 @@ export const getData = async (req, res) => {
     });
   } catch(e) {
     console.log(e);
-  };
+  };*/
   
 };

@@ -14,10 +14,12 @@
     "iconv-lite": "^0.6.3",
     "node-fetch": "^3.0.0",
     "pug": "^3.0.2",
+    "regenerator-runtime": "^0.13.9",
     "request": "^2.88.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.4",
+    "@babel/cli": "^7.15.4",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.4",
     "nodemon": "^2.0.12"
