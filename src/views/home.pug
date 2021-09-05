@@ -5,6 +5,6 @@ block content
     if finalResult
         each article in finalResult
             p
-                a(href=`${article.url}`)=article.title
+                a(href=`${article.url}`)=`[${article.date}] ${article.title}`
 
     p="home!"
