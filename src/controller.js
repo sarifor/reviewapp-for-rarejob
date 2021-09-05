@@ -11,12 +11,11 @@ export const getData = async (req, res) => {
       baseURL: baseURL
     });
     
-    const body = await client.get("/");
-    const $ = cheerio.load(body);
-    console.log(body);
+    const response = await client.get("/");
+    const $ = cheerio.load(response.data);
 
     $(".h2.entry-title > a").each((index, item)=>{articles.push(item.attribs)});
-    console.log(articles); // []로 나옴(배열이 채워지지 않음)
+    console.log(articles);
 
     articles.forEach((div) => { // 배열의 각 요소에 대해 함수 실행
       const path = div.href;
