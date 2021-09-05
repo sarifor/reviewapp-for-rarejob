@@ -2,8 +2,8 @@ extends templates/layout
 
 block content
 
-    if result
-        each article in result
+    if finalResult
+        each article in finalResult
             p
                 a(href=`${article.url}`)=article.title
 

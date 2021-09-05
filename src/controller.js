@@ -30,16 +30,20 @@ const accessURL = async () => {
 
   });
 
-  // console.log(result);
+  articles = [];
 };
 
 
 export const getData = async (req, res) => {
   try {
     await accessURL();
-    console.log("now in getData Function");
-    console.log(result); // 전역변수에 값을 넣었는데도, [](빈 배열)만 나옴.
-    return res.render("home", { result });
+
+    let finalResult = [];
+    finalResult = result;
+    result = [];
+
+    return res.render("home", { finalResult });
+
   } catch(e) {
     console.log(e);
   };
