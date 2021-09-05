@@ -4,6 +4,7 @@ block content
 
     if result
         each article in result
-            p=article.title
+            p
+                a(href=`${article.url}`)=article.title
 
     p="home!"
