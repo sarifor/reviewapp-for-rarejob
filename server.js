@@ -1,3 +1,6 @@
+import "./src/db";
+import "./src/models/Article";
+
 import express from "express";
 import path from "path";
 import routeRouter from "./src/routeRouter";
