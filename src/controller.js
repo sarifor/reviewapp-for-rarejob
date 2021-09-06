@@ -68,21 +68,31 @@ export const saveData = async (req, res) => {
       clickedDate: "clickedDate2",
     },
     {
-      url : "url1",
-      title: "title1",
-      date: "date1",
-      clickedDate: "clickedDate1",
+      url : "url3",
+      title: "title3",
+      date: "date3",
+      clickedDate: "clickedDate3",
     },
   ];
 
-  try {
-    await Article.insertMany(tempArray, { ordered: false });  // MongoBulkWriteError: E11000 duplicate key error collection: demo.Article index: url_1 dup key: { url: "url1" }
-    console.log("saved");
-    return res.end();
-  } catch (error) {
-    console.log(error);
-    return res.end();
-  };
-  // console.log(tempArray[1].url);
+  for (var i = 0; i < tempArray.length; i++) {
+    console.log(tempArray[i].date);
 
+    try {
+      const exist = await Article.findOne({ date: tempArray[i].date})
+
+      if(exist) {
+        console.log(`${tempArray[i]} already exist`);
+        res.end();
+      } else {
+        await Article.create(tempArray[i]);
+        console.log(`${tempArray[i]} added`);
+        res.end();
+      };
+    } catch(e) {
+      console.log(e);
+      res.end();
+    };
+  };
+  
 };
