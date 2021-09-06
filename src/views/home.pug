@@ -3,8 +3,16 @@ extends templates/layout
 block content
 
     if data
-        each article in data
-            p
-                a(href=`${article.url}`)=`[${article.date}] ${article.title}`
+        table(border="0")    
+            each article in data
+                div#eachArticle(data-id=article._id)
+                    tr
+                        td
+                            form#commentForm
+                                input(type="text", name="clickedDate", value=article.clickedDate)#clickedDate
+                                button(type="submit")="Submit!"
+                        td
+                            a(href=`${article.url}`)=`[${article.date}] ${article.title}`        
 
-    p="home!"
+block script
+    script(src="static/js/comment.js")

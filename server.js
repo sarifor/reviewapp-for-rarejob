@@ -11,6 +11,7 @@ const PORT = 3000
 app.set("view engine", "pug");
 app.set("views", path.join(process.cwd(), "/src/views"));
 
+app.use("/static", express.static("src/client"));
 app.use("/", routeRouter);
 
 app.listen(PORT, () => {

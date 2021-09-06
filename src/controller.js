@@ -63,16 +63,16 @@ export const saveData = (req, res) => {
     data = await getData();
 
     for (var i = 0; i < data.length; i++) {
-      console.log(data[i].date);
+      // console.log(data[i].date);
   
       try {
         const exist = await Article.findOne({ date: data[i].date})
   
         if(exist) {
-          console.log(`${data[i]} already exist`);
+          // console.log(`${data[i]} already exist`);
         } else {
           await Article.create(data[i]);
-          console.log(`${data[i]} added`);
+          // console.log(`${data[i]} added`);
         };
 
       } catch(e) {
