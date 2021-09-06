@@ -70,20 +70,19 @@ export const saveData = (req, res) => {
   
         if(exist) {
           console.log(`${data[i]} already exist`);
-          res.end();
         } else {
           await Article.create(data[i]);
           console.log(`${data[i]} added`);
-          res.end();
         };
 
       } catch(e) {
         console.log(e);
-        res.end();
+        // return res.end();
       };
 
     };
 
+    return res.render("home", { data });
   })();
 
   if (data.length === 0) {
@@ -91,7 +90,5 @@ export const saveData = (req, res) => {
       console.log("wait for data coming");
     }, 1000)    
   };
-
-  return res.end();
 
 };
