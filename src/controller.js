@@ -45,7 +45,9 @@ export const getData = async (req, res) => {
     finalResult = result;
     result = [];
 
-    return res.render("home", { finalResult });
+
+    return finalResult;
+    // return res.render("home", { finalResult });
 
   } catch(e) {
     console.log(e);
@@ -53,29 +55,15 @@ export const getData = async (req, res) => {
   
 };
 
-export const saveData = async (req, res) => {
-  const tempArray = [
-    {
-      url : "url1",
-      title: "title1",
-      date: "date1",
-      clickedDate: "clickedDate1",
-    },
-    {
-      url : "url2",
-      title: "title2",
-      date: "date2",
-      clickedDate: "clickedDate2",
-    },
-    {
-      url : "url3",
-      title: "title3",
-      date: "date3",
-      clickedDate: "clickedDate3",
-    },
-  ];
+export const saveData = (req, res) => {
+  
+  const finalResult = getData();
+  console.log(finalResult);
 
-  for (var i = 0; i < tempArray.length; i++) {
+  return res.end();
+
+
+  /*for (var i = 0; i < tempArray.length; i++) {
     console.log(tempArray[i].date);
 
     try {
@@ -93,6 +81,6 @@ export const saveData = async (req, res) => {
       console.log(e);
       res.end();
     };
-  };
+  };*/
   
 };
