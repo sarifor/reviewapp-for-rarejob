@@ -57,30 +57,41 @@ export const getData = async (req, res) => {
 
 export const saveData = (req, res) => {
   
-  const finalResult = getData();
-  console.log(finalResult);
+  let data = [];
+
+  (async () => {
+    data = await getData();
+
+    for (var i = 0; i < data.length; i++) {
+      console.log(data[i].date);
+  
+      try {
+        const exist = await Article.findOne({ date: data[i].date})
+  
+        if(exist) {
+          console.log(`${data[i]} already exist`);
+          res.end();
+        } else {
+          await Article.create(data[i]);
+          console.log(`${data[i]} added`);
+          res.end();
+        };
+
+      } catch(e) {
+        console.log(e);
+        res.end();
+      };
+
+    };
+
+  })();
+
+  if (data.length === 0) {
+    setTimeout(function() {
+      console.log("wait for data coming");
+    }, 1000)    
+  };
 
   return res.end();
 
-
-  /*for (var i = 0; i < tempArray.length; i++) {
-    console.log(tempArray[i].date);
-
-    try {
-      const exist = await Article.findOne({ date: tempArray[i].date})
-
-      if(exist) {
-        console.log(`${tempArray[i]} already exist`);
-        res.end();
-      } else {
-        await Article.create(tempArray[i]);
-        console.log(`${tempArray[i]} added`);
-        res.end();
-      };
-    } catch(e) {
-      console.log(e);
-      res.end();
-    };
-  };*/
-  
 };
