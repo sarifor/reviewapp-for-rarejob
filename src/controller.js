@@ -1,3 +1,4 @@
+import Article from "./models/Article";
 import axios from "axios";
 import cheerio from "cheerio";
 
@@ -36,7 +37,6 @@ const accessURL = async () => {
 
 };
 
-
 export const getData = async (req, res) => {
   try {
     await accessURL();
@@ -51,4 +51,38 @@ export const getData = async (req, res) => {
     console.log(e);
   };
   
+};
+
+export const saveData = async (req, res) => {
+  const tempArray = [
+    {
+      url : "url1",
+      title: "title1",
+      date: "date1",
+      clickedDate: "clickedDate1",
+    },
+    {
+      url : "url2",
+      title: "title2",
+      date: "date2",
+      clickedDate: "clickedDate2",
+    },
+
+  ];
+
+  /*try {
+    await Article.create({
+      url,
+      title,
+      date,
+      clickedDate,
+    });
+    console.log("saved");
+    return res.end();
+  } catch (error) {
+    console.log(error);
+    return res.end();
+  }*/  
+  console.log(tempArray[1].url);
+
 };
