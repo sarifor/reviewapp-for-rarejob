@@ -67,22 +67,22 @@ export const saveData = async (req, res) => {
       date: "date2",
       clickedDate: "clickedDate2",
     },
-
+    {
+      url : "url1",
+      title: "title1",
+      date: "date1",
+      clickedDate: "clickedDate1",
+    },
   ];
 
-  /*try {
-    await Article.create({
-      url,
-      title,
-      date,
-      clickedDate,
-    });
+  try {
+    await Article.insertMany(tempArray, { ordered: false });  // MongoBulkWriteError: E11000 duplicate key error collection: demo.Article index: url_1 dup key: { url: "url1" }
     console.log("saved");
     return res.end();
   } catch (error) {
     console.log(error);
     return res.end();
-  }*/  
-  console.log(tempArray[1].url);
+  };
+  // console.log(tempArray[1].url);
 
 };
