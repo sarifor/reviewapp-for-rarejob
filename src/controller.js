@@ -93,3 +93,17 @@ export const saveData = (req, res) => {
 
 };
 
+export const saveComment = async (req, res) => {
+  const { date, value } = res.body;
+  
+  try {
+    const oneArticle = await Article.findOneAndUpdate({ date }, {
+      clickedDate: value
+    });
+    console.log(oneArticle);
+    return res.redirect("/");
+    
+  } catch (e) {
+    return res.render("home", { err: e });
+  }
+}
