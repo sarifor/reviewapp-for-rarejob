@@ -4,15 +4,16 @@ block content
 
     if data
         table(border="0")    
-            each article in data
-                div#eachArticle(data-id=article._id)
-                    tr
-                        td
-                            form#commentForm
-                                input(type="text", name="clickedDate", value=article.clickedDate)#clickedDate
-                                button(type="submit")="Submit!"
-                        td
-                            a(href=`${article.url}`)=`[${article.date}] ${article.title}`        
+
+                each article in data
+                    div#article.date
+                        tr
+                            td
+                                form(onsubmit="test(event)")#commentForm
+                                    input(type="text", name="clickedDate", id=article.date, value="")
+                                    button(type="submit")="Submit!"
+                            td
+                                a(href=`${article.url}`, onclick="test(event)")=`[${article.date}] ${article.title}`        
 
 block script
     script(src="static/js/comment.js")
