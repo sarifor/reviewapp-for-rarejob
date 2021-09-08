@@ -1,6 +1,5 @@
 import express from "express";
 import {
-  getData,
   saveData,
   saveComment  
 } from "./Controller";
@@ -8,5 +7,5 @@ import {
 const routeRouter = express.Router();
 
 routeRouter.get("/", saveData);
-routeRouter.get("/:id", saveComment);
+routeRouter.post("/:id", saveComment);
 export default routeRouter;

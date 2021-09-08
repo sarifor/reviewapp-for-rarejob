@@ -7,8 +7,8 @@ const test = (event) => {
 
     //fetch로 값 보내기
     try {
-      fetch(`localhost:3000/${id}`, { // Uncaught (in promise) TypeError: Failed to execute 'fetch' on 'Window': Request with GET/HEAD method cannot have body.
-        method: 'GET',
+      fetch(`localhost:3000/${id}`, { // Fetch API cannot load localhost:3000/2021/08/29. URL scheme "localhost" is not supported.
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
