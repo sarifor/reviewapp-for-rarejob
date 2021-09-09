@@ -1,6 +1,7 @@
 // import "@babel/polyfill";
 // import "regenerator-runtime/runtime";
 
+console.log("came to comment.js?");
 const test = (event) => {
     event.preventDefault();
 

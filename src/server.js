@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(express.text());
 
-app.use("/static", express.static("src/assets"));
+app.use("/static", express.static("assets"));
 app.use("/", routeRouter);
 
 app.listen(PORT, () => {
