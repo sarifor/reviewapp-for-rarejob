@@ -93,10 +93,12 @@ export const saveData = (req, res) => {
 
 };
 
-export const saveComment = async (req, res) => {
+export const saveComment = (req, res) => {
 
-  console.log("came?")
+  console.log("came?");
+  console.log(res.body);
   
+  /*
   const { date, value } = res.body;
   
   try {
@@ -108,5 +110,6 @@ export const saveComment = async (req, res) => {
     
   } catch (e) {
     return res.render("home", { err: e });
-  }
+  }*/
+  return res.end();
 }

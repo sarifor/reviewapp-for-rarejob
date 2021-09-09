@@ -12,7 +12,7 @@ const PORT = 3000
 app.set("view engine", "pug");
 app.set("views", path.join(process.cwd(), "/src/views"));
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/static", express.static("src/client"));
 app.use("/", routeRouter);
 
