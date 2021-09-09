@@ -1,4 +1,4 @@
-import "./db"; // test
+import "./db"; // test 2
 import "./models/Article";
 
 import express from "express";
