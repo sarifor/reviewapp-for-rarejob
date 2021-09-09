@@ -6,7 +6,7 @@ import path from "path";
 import routeRouter from "./routeRouter";
 
 const app = express();
-const PORT = 3000
+const PORT = process.env.PORT || 3000;
 
 app.set("view engine", "pug");
 app.set("views", path.join(process.cwd(), "/src/views"));
