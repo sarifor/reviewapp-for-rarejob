@@ -7,5 +7,5 @@ import {
 const routeRouter = express.Router();
 
 routeRouter.get("/", saveData);
-routeRouter.post("/:id", saveComment);
+routeRouter.post("/", saveComment);
 export default routeRouter;
