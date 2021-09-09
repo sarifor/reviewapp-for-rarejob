@@ -1,4 +1,6 @@
-const test = (event) => {
+import "regenerator-runtime";
+
+const test = async (event) => {
     event.preventDefault();
 
     try {
@@ -9,18 +11,17 @@ const test = (event) => {
       console.log(date);
       console.log(value);*/
 
-      let response = fetch("/", {
-        method: 'POST',
+      let text = "abcde";
+
+      await fetch("/", {
+        method: "POST",
         headers: {
-          'Content-Type': 'text/html; charset=utf-8',
-          // 'Accept':'application/json'
+          "Content-Type": "application/json",
         },
-        // json: requestData,
-        // body: JSON.stringify({ date: "2021/08/29", value: "abcdedfgs" }),
-        body: "now in comment.js"
+        body: JSON.stringify({ text }),
       });
-      console.log("fetched?");
-      return response.ok
+
+
 
     } catch (e) {
       console.log(e.message);

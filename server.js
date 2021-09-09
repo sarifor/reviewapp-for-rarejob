@@ -14,8 +14,8 @@ app.set("views", path.join(process.cwd(), "/src/views"));
 
 app.use(express.urlencoded({ extended: true }));
 // app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.json());
-app.use(express.text());
+app.use(express.json());
+// app.use(express.text());
 
 app.use("/static", express.static("src/client"));
 app.use("/", routeRouter);
