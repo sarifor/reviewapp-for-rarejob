@@ -11,11 +11,10 @@ block content
                     div#article.date
                         tr
                             td
-                                form(onsubmit="test(event)")#commentForm
+                                form(method="POST")#commentForm
                                     input(type="text", name="clickedDate", id=article.date, value=article.clickedDate)
-                                    button(type="submit")="Submit!"
+                                    button="Submit!"
                             td
                                 a(href=`${article.url}`, onclick="test(event)")=`[${article.date}] ${article.title}`        
 
-block script
-    script(src="static/js/comment.js")
+

@@ -1,7 +1,7 @@
 // import "@babel/polyfill";
 // import "regenerator-runtime/runtime";
+const form = document.getElementById("commentForm");
 
-console.log("came to comment.js?");
 const test = (event) => {
     event.preventDefault();
 
@@ -9,6 +9,8 @@ const test = (event) => {
       const input = event.target.querySelector("input");
       let date = input.id;
       let value = input.value;
+
+      console.log(date, value);
 
       fetch("/", { // Fetch failed loading: POST "http://localhost:3000/" 
         method: "POST",
@@ -22,3 +24,7 @@ const test = (event) => {
       console.log(e.message);
     };
 };
+
+if (form) {
+  form.addEventListener("submit", test);
+}
