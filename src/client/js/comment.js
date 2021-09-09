@@ -14,7 +14,7 @@ const test = (event) => {
 
       let text = "abcde";
 
-      fetch("/", {
+      fetch("/", { // Fetch failed loading: POST "http://localhost:3000/" 
         method: "POST",
         headers: {
           "Content-Type": "application/json",

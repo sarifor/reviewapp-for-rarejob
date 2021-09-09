@@ -96,7 +96,7 @@ export const saveData = (req, res) => {
 export const saveComment = (req, res) => {
 
   console.log("came?");
-  console.log(res.body);
+  console.log(req.body);
   
   /*
   const { date, value } = res.body;
