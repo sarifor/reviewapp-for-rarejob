@@ -19,8 +19,10 @@ const ArticleSchema = new mongoose.Schema({
     },
     clickedDate: {
         type: String,
-    }
+    }, 
+    // versionKey: false
 });
+// }, { versionKey: false });
 
 const model = mongoose.model("Article", ArticleSchema, "Article");
 

@@ -55,7 +55,7 @@ export const getData = async (req, res) => {
   
 };
 
-export const saveData = (req, res) => {
+export const saveData = async (req, res) => {
   
   let data = [];
 
@@ -81,8 +81,9 @@ export const saveData = (req, res) => {
       };
 
     };
-
-    return res.render("home", { data });
+    // console.log(data);
+    const dataInDB = await Article.find({});
+    return res.render("home", { data: dataInDB });
   })();
 
   if (data.length === 0) {
@@ -100,6 +101,8 @@ export const saveComment = async (req, res) => {
     const oneArticle = await Article.findOneAndUpdate({ date }, {
       clickedDate: value
     });
+    // }, { returnNewDocument: true });
+    // oneArticle.save();
     console.log(oneArticle);
     return res.redirect("/");
     
