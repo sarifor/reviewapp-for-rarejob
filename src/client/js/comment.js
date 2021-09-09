@@ -7,12 +7,12 @@ const test = (event) => {
 
     //fetch로 값 보내기
     try {
-      fetch(`localhost:3000/${id}`, { // Fetch API cannot load localhost:3000/2021/08/29. URL scheme "localhost" is not supported.
+      fetch(`/${id}`, { // POST http://localhost:3000/2021/08/28 404 (Not Found)  // Fetch failed loading: POST "http://localhost:3000/2021/08/28"
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(value)
+        body: JSON.stringify({ value })
       });
     } catch (e) {
       console.log("failed to fetch url");

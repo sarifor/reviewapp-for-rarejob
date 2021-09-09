@@ -94,6 +94,9 @@ export const saveData = (req, res) => {
 };
 
 export const saveComment = async (req, res) => {
+
+  console.log("came?")
+  
   const { date, value } = res.body;
   
   try {
