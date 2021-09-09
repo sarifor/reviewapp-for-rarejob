@@ -1,4 +1,7 @@
-import "./db"; // test 3
+import dotenv from "dotenv"; // test 4
+dotenv.config();
+
+import "./db";
 import "./models/Article";
 
 import express from "express";
