@@ -93,15 +93,10 @@ export const saveData = (req, res) => {
 
 };
 
-export const saveComment = (req, res) => {
-
-  console.log("came?");
-  console.log(req.body);
-  
-  /*
-  const { date, value } = res.body;
+export const saveComment = async (req, res) => {
   
   try {
+    const { date, value } = req.body;
     const oneArticle = await Article.findOneAndUpdate({ date }, {
       clickedDate: value
     });
@@ -109,7 +104,6 @@ export const saveComment = (req, res) => {
     return res.redirect("/");
     
   } catch (e) {
-    return res.render("home", { err: e });
-  }*/
-  return res.end();
-}
+    return res.render("home", { err: e.message });
+  };
+};
