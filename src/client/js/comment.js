@@ -1,6 +1,7 @@
-import "regenerator-runtime";
+// import "@babel/polyfill";
+// import "regenerator-runtime/runtime";
 
-const test = async (event) => {
+const test = (event) => {
     event.preventDefault();
 
     try {
@@ -13,15 +14,13 @@ const test = async (event) => {
 
       let text = "abcde";
 
-      await fetch("/", {
+      fetch("/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ text }),
       });
-
-
 
     } catch (e) {
       console.log(e.message);
