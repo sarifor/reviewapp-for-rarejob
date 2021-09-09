@@ -1,3 +1,4 @@
+import "regenerator-runtime";
 import Article from "./models/Article";
 import axios from "axios";
 import cheerio from "cheerio";
