@@ -46,9 +46,7 @@ export const getData = async (req, res) => {
     finalResult = result;
     result = [];
 
-
     return finalResult;
-    // return res.render("home", { finalResult });
 
   } catch(e) {
     console.log(e);
@@ -64,36 +62,21 @@ export const saveData = async (req, res) => {
     data = await getData();
 
     for (var i = 0; i < data.length; i++) {
-      // console.log(data[i].date);
-  
       try {
         const exist = await Article.findOne({ date: data[i].date})
   
-        if(exist) {
-          // console.log(`${data[i]} already exist`);
-        } else {
+        if(!exist) {
           await Article.create(data[i]);
-          // console.log(`${data[i]} added`);
         };
 
       } catch(e) {
         console.log(e);
-        // return res.end();
       };
 
     };
-    // console.log(data);
     const dataInDB = await Article.find({});
     return res.render("home", { data: dataInDB });
   })();
-
-  /*if (data.length === 0) {
-    setTimeout(function() {
-      console.log("Wait for data coming");
-    }, 4000)    
-  } else {
-    console.log("Data is ready");
-  }*/
 
   if(data) {
     console.log("Data is ready");
@@ -101,42 +84,19 @@ export const saveData = async (req, res) => {
 };
 
 export const saveComment = async (req, res) => {
-  /*
-    try {
-      // console.log(req.body);
-      const { date, value } = req.body;
+  try {
+    const { date, value } = req.body;
+    const oneArticle = await Article.findOne({ date });
 
-
-      console.log(date);
-
-      setTimeout(function() {
-        console.log("wait for data found");
-      }, 5000);
-
-      const oneArticle = await Article.findOne({ date });
-
-      setTimeout(function() {
-        console.log("wait for data found again");
-      }, 5000);
-
-      console.log(`This is an article read from DB: ${oneArticle}`);
-
-      const updatedArticle = await oneArticle.updateOne( { clickedDate: value } );
-
-      if (!updatedArticle) {
-        console.log("Article doesn't exist");
-        return res.redirect("/");
-      }
-
-      console.log(`This is an article updated to DB: ${updatedArticle}`);
+    const updatedArticle = await oneArticle.updateOne( { clickedDate: value } );
+    if (!updatedArticle) {
+      console.log("Article doesn't exist");
       return res.redirect("/");
-      
-    } catch (e) {
-      return res.render("home", { err: e.message });
-    };
-  */
-    
-    console.log(req.body);
-    res.end();
+    }
 
+    return res.redirect("/");
+    
+  } catch (e) {
+    return res.render("home", { err: e.message });
+  };
 };
