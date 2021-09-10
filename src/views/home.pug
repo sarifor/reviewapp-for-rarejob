@@ -1,5 +1,8 @@
 extends templates/layout
 
+block script
+    script(src="static/js/comment.js" defer)
+
 block content
     if err
         p=err
@@ -15,6 +18,7 @@ block content
                                     input(type="text", name="clickedDate", id=article.date, value=article.clickedDate)
                                     button="Submit!"
                             td
-                                a(href=`${article.url}`, onclick="test(event)")=`[${article.date}] ${article.title}`        
+                                a(href=article.url)=`[${article.date}] ${article.title}`
+
 
 

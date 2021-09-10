@@ -4,10 +4,6 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    // link(rel="stylesheet", href="https://unpkg.com/mvp.css@1.7.4/mvp.css")
-    // script(src="/node_modules/regenerator-runtime/runtime.js" defer)
-    // script(src="/static/js/main.js")
-    script(src="static/js/comment.js" defer)    
   body
     header
       p="header"
@@ -16,8 +12,8 @@ html(lang="en")
       p="nav"
 
     main
+      block script
       block content
-
 
     footer
       p="footer"

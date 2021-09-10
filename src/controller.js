@@ -101,50 +101,42 @@ export const saveData = async (req, res) => {
 };
 
 export const saveComment = async (req, res) => {
-  
-  try {
-    // console.log(req.body);
-    const { date, value } = req.body;
+  /*
+    try {
+      // console.log(req.body);
+      const { date, value } = req.body;
 
-    /*
-    const oneArticle = await Article.findOneAndUpdate({ date }, {
-      clickedDate: value
-    });
-    // }, { returnNewDocument: true });
-    // oneArticle.save();
-    */
 
-    console.log(date);
+      console.log(date);
 
-    setTimeout(function() {
-      console.log("wait for data found");
-    }, 5000);
-
-    const oneArticle = await Article.findOne({ date });
-
-    setTimeout(function() {
-      console.log("wait for data found again");
-    }, 5000);
-
-    console.log(`This is an article read from DB: ${oneArticle}`);
-
-    const updatedArticle = await oneArticle.updateOne( { clickedDate: value } );
-
-    /*if (updatedArticle.length === 0) {
       setTimeout(function() {
-        console.log("wait for data coming");
-      }, 1000)    
-    };*/
+        console.log("wait for data found");
+      }, 5000);
 
-    if (!updatedArticle) {
-      console.log("Article doesn't exist");
+      const oneArticle = await Article.findOne({ date });
+
+      setTimeout(function() {
+        console.log("wait for data found again");
+      }, 5000);
+
+      console.log(`This is an article read from DB: ${oneArticle}`);
+
+      const updatedArticle = await oneArticle.updateOne( { clickedDate: value } );
+
+      if (!updatedArticle) {
+        console.log("Article doesn't exist");
+        return res.redirect("/");
+      }
+
+      console.log(`This is an article updated to DB: ${updatedArticle}`);
       return res.redirect("/");
-    }
-
-    console.log(`This is an article updated to DB: ${updatedArticle}`);
-    return res.redirect("/");
+      
+    } catch (e) {
+      return res.render("home", { err: e.message });
+    };
+  */
     
-  } catch (e) {
-    return res.render("home", { err: e.message });
-  };
+    console.log(req.body);
+    res.end();
+
 };
