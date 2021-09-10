@@ -4,6 +4,7 @@ const form = document.getElementById("commentForm");
 
 const test = (event) => {
     event.preventDefault();
+    console.log(event.target);
 
     try {
       const input = event.target.querySelector("input");

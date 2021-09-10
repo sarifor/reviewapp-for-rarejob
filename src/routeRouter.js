@@ -2,7 +2,7 @@ import express from "express";
 import {
   saveData,
   saveComment  
-} from "./Controller";
+} from "./controller";
 
 const routeRouter = express.Router();
 

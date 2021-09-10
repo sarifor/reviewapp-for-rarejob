@@ -87,24 +87,61 @@ export const saveData = async (req, res) => {
     return res.render("home", { data: dataInDB });
   })();
 
-  if (data.length === 0) {
+  /*if (data.length === 0) {
     setTimeout(function() {
-      console.log("wait for data coming");
-    }, 1000)    
-  };
+      console.log("Wait for data coming");
+    }, 4000)    
+  } else {
+    console.log("Data is ready");
+  }*/
 
+  if(data) {
+    console.log("Data is ready");
+  };
 };
 
 export const saveComment = async (req, res) => {
   
   try {
+    // console.log(req.body);
     const { date, value } = req.body;
+
+    /*
     const oneArticle = await Article.findOneAndUpdate({ date }, {
       clickedDate: value
     });
     // }, { returnNewDocument: true });
     // oneArticle.save();
-    console.log(oneArticle);
+    */
+
+    console.log(date);
+
+    setTimeout(function() {
+      console.log("wait for data found");
+    }, 5000);
+
+    const oneArticle = await Article.findOne({ date });
+
+    setTimeout(function() {
+      console.log("wait for data found again");
+    }, 5000);
+
+    console.log(`This is an article read from DB: ${oneArticle}`);
+
+    const updatedArticle = await oneArticle.updateOne( { clickedDate: value } );
+
+    /*if (updatedArticle.length === 0) {
+      setTimeout(function() {
+        console.log("wait for data coming");
+      }, 1000)    
+    };*/
+
+    if (!updatedArticle) {
+      console.log("Article doesn't exist");
+      return res.redirect("/");
+    }
+
+    console.log(`This is an article updated to DB: ${updatedArticle}`);
     return res.redirect("/");
     
   } catch (e) {
