@@ -18,7 +18,7 @@
     "core-js": "^3.17.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "heroku": "^7.59.0",
+    "heroku": "^7.7.8",
     "iconv-lite": "^0.6.3",
     "mongodb": "^4.1.1",
     "mongoose": "^6.0.4",
