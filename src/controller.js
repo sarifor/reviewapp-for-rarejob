@@ -56,11 +56,15 @@ export const getData = async (req, res) => {
 
 export const saveData = async (req, res) => {
   
-  let data = [];
+  let data = [];  
 
-  (async () => {
+  try {
     data = await getData();
 
+    if(data) {
+      console.log("Data is ready");
+    };
+        
     for (var i = 0; i < data.length; i++) {
       try {
         const exist = await Article.findOne({ date: data[i].date})
@@ -68,19 +72,19 @@ export const saveData = async (req, res) => {
         if(!exist) {
           await Article.create(data[i]);
         };
-
+  
       } catch(e) {
         console.log(e);
       };
-
+  
     };
     const dataInDB = await Article.find({});
     return res.render("home", { data: dataInDB });
-  })();
 
-  if(data) {
-    console.log("Data is ready");
+  } catch (e) {
+    console.log(e);
   };
+
 };
 
 export const saveComment = async (req, res) => {
